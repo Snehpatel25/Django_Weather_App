@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your custom CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Weather App</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+
+        {% if weather %}
+            <div class="weather-info">
+                <h2>{{ weather.city }}</h2>
+                <p>Temperature: {{ weather.temperature }}°C</p>
+                <p>Description: {{ weather.description }}</p>
+                <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Weather icon">
+            </div>
+        {% elif error_message %}
+            <p class="text-danger">{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Link to your custom JavaScript file -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
