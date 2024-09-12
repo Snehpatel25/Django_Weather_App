@@ -32,7 +32,8 @@ SECRET_KEY = env('SECRET_KEY', default='django-insecure-g)&4vjy@oeat&mms(%u7wizv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'django-weather-app-alpha.vercel.app']
+
 
 
 # Application definition
